@@ -27,14 +27,9 @@ LST_SRC		=	megaphone.cpp
 
 all:	$(NAME)
 
-$(NAME):	$(LST_SRC) | makefile
+$(NAME):	$(LST_SRC) | Makefile
 	@$(CC) $(CFLAGS) $(LST_SRC) -o $(NAME)
 	@echo "\e[1;32m🎍 $(NAME) program created successfully ! 🎍\e[0m"
-
-$(D_OBJ)%.o: %.c | $(D_OBJ) $(D_DEP) makefile
-	@echo "\e[1;34m☄️  Compiling $^ into $@...	\e[0m"
-	@$(CC) $(CFLAGS) -g3 -I$(D_INC) -c $< -o $@
-	@mv $(@:.o=.d) $(D_DEP)
 
 clean:
 	@echo "\e[1;36m🫗 No object file found for $(NAME) 🫗\e[0m"
