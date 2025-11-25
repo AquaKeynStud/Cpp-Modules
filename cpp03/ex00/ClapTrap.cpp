@@ -14,6 +14,8 @@ ClapTrap::ClapTrap(std::string name)
 	std::cout << RESET;
 }
 
+
+
 ClapTrap::ClapTrap(const ClapTrap& toCopy)
 	:	_name(toCopy.getName()),
 		_hit_pts(toCopy.getHitPts()),
