@@ -2,7 +2,7 @@
 #include "ClapTrap.hpp"
 
 /* -- Constructors -- */
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(const std::string& name)
 	:	_name(name),
 		_hit_pts(10),
 		_energy_pts(10),
@@ -57,6 +57,17 @@ int ClapTrap::getEnergyPts() const { return (_energy_pts); }
 int ClapTrap::getAttackDmg() const { return (_attack_dmg); }
 
 const std::string& ClapTrap::getName() const { return (_name); }
+
+/* -- Setters -- */
+void ClapTrap::subtractHitPoints(unsigned int amount)
+{
+	if (not _hit_pts)
+		return;
+	if (_hit_pts < amount)
+		_hit_pts = 0;
+	else
+		_hit_pts -= amount;
+}
 
 /* -- Methods -- */
 void ClapTrap::takeDamage(unsigned int amount)
