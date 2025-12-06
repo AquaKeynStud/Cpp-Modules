@@ -1,4 +1,5 @@
 #include <ctime>
+#include <iomanip>
 #include <iostream>
 #include "Account.hpp"
 
@@ -58,16 +59,48 @@ void Account::displayAccountsInfos( void )
 
 void Account::makeDeposit( int deposit )
 {
+	Account::_displayTimestamp();
+
+	std::cout << "index:" << _accountIndex;
+	std::cout << ";p_amount:" << _amount;
+	std::cout << ";deposits:" << deposit;
+
 	_nbDeposits++;
 	_amount += deposit;
+
+	_totalNbDeposits++;
+	_totalAmount += deposit;
+
+	std::cout << ";amount:" << _amount;
+	std::cout << ";nb_deposits:" << _nbDeposits;
+	std::cout << std::endl;
 }
 
 bool Account::makeWithdrawal( int withdrawal )
 {
+	Account::_displayTimestamp();
+
+	std::cout << "index:" << _accountIndex;
+	std::cout << ";p_amount:" << _amount;
+	std::cout << ";withdrawal:";
+
 	if (_amount < withdrawal)
+	{
+		std::cout << "refused" << std::endl;
 		return (false);
+	}
+
 	_nbWithdrawals++;
 	_amount -= withdrawal;
+
+	_totalNbWithdrawals++;
+	_totalAmount -= withdrawal;
+
+	std::cout << withdrawal;
+	std::cout << ";amount:" << _amount;
+	std::cout << ";nb_withdrawals:" << _nbWithdrawals;
+	std::cout << std::endl;
+
 	return (true);
 }
 
@@ -90,8 +123,13 @@ void Account::_displayTimestamp( void )
 	std::tm *tm = std::localtime(&now);		// Conversion to a tm pointer by slicing in variables
 
 	std::cout << "[";
-	std::cout << tm->tm_year + 1900 << tm->tm_mon + 1 << tm->tm_mday;
+
+	std::cout << tm->tm_year + 1900;
+	std::cout << std::setw(2) << std::setfill('0') << tm->tm_mon + 1;
+	std::cout << std::setw(2) << std::setfill('0') << tm->tm_mday;
 	std::cout << "_";
-	std::cout << tm->tm_hour << tm->tm_min << tm->tm_sec;
+	std::cout << std::setw(2) << std::setfill('0') << tm->tm_hour;
+	std::cout << std::setw(2) << std::setfill('0') << tm->tm_min;
+	std::cout << std::setw(2) << std::setfill('0') << tm->tm_sec;
 	std::cout << "] ";
 }
