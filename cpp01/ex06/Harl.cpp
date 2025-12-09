@@ -32,22 +32,23 @@ void Harl::error( void )
 
 void Harl::complain( std::string level )
 {
-	std::string	levels[4] = { "DEBUG", "INFO", "WARNING", "ERROR" };
-	void		(Harl::* const f[4])( void ) = {
-		&Harl::debug,
-		&Harl::info,
-		&Harl::warning,
-		&Harl::error
-	};
-
-	for (int i = 0; i < 4; i++)
+	int lvl = (level == "DEBUG") ? 0 : (level == "INFO") ? 1 : (level == "WARNING") ? 2 : (level == "ERROR") ? 3 : -1;
+	
+	switch (lvl)
 	{
-		if (levels[i] == level)
-		{
-			(this->*f[i])();
-			return;
-		}
+		case 0:
+			debug();
+			/* fall through */
+		case 1:
+			info();
+			/* fall through */
+		case 2:
+			warning();
+			/* fall through */
+		case 3:
+			error();
+			break;
+		default:
+			std::cout << "Invalid level" << std::endl;
 	}
-
-	std::cout << "Invalid level" << std::endl;
 }
