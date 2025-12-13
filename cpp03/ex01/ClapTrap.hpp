@@ -30,7 +30,7 @@ public:
 	ClapTrap(const ClapTrap& toCopy);
 
 // Destructor //
-	~ClapTrap();
+	virtual ~ClapTrap();
 
 // Assignment operator //
 	ClapTrap&	operator=(const ClapTrap& other);
