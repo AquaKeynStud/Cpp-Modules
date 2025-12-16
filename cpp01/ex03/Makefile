@@ -26,8 +26,8 @@ D_INC		=	include/
 D_OBJ		=	.objs/
 
 # file lists
-SRCS		=	$(wildcard $(D_SRC)*.cpp)
-INCS		=	$(wildcard $(D_INC)*.hpp)
+SRCS		=	$(addprefix $(D_SRC), HumanA.cpp HumanB.cpp Weapon.cpp main.cpp)
+INCS		=	$(addprefix $(D_INC), HumanA.hpp HumanB.hpp Weapon.hpp)
 OBJS		=	$(patsubst $(D_SRC)%.cpp,$(D_OBJ)%.o,$(SRCS))
 
 INC			=	-I$(D_INC)
@@ -36,7 +36,7 @@ INC			=	-I$(D_INC)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJS) | Makefile $(D_OBJ)
+$(NAME):	$(OBJS) $(INCS) | Makefile $(D_OBJ)
 	@$(CXX) $(CXXFLAGS) $(INC) $(OBJS) -o $(NAME)
 	@echo "\e[1;32m🎍 $(NAME) program created successfully ! 🎍\e[0m"
 

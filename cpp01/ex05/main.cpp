@@ -7,10 +7,10 @@ int main( int argc, char **argv )
 	int		i = 1;
 
 	if (argc < 2)
-		std::cout << "Please provide an argument." << std::endl;
+		std::cout << "\e[31;1m🈲 Error: Please provide an argument. 🈲\e[0m" << std::endl;
 
 	while (argv[i])
 		harl.complain(argv[i++]);
-	
+
 	return (0);
 }

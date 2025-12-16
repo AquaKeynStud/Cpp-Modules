@@ -3,7 +3,7 @@
 
 std::string search_and_replace( const std::string &s, const std::string& s1, const std::string &s2 )
 {
-	if (s.empty())
+	if (s.empty() or s1.empty())
 		return (s);
 
 	std::string				res;

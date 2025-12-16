@@ -5,6 +5,9 @@
 #include <string>
 #include "ICharacter.hpp"
 
+/* -- Colors -- */
+#define RESET	"\e[0m\n"
+
 /* -- Class -- */
 class AMateria
 {

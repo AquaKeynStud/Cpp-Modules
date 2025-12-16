@@ -4,7 +4,7 @@ NAME := refs
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ BASICS VARIABLES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
-CC				:=	c++
+CXX				:=	c++
 
 CFLAGS			:=	-Wall -Wextra -Werror -std=c++98
 
@@ -28,7 +28,7 @@ LST_SRC		=	main.cpp
 all:	$(NAME)
 
 $(NAME):	$(LST_SRC) | Makefile
-	@$(CC) $(CFLAGS) $(LST_SRC) -o $(NAME)
+	@$(CXX) $(CFLAGS) $(LST_SRC) -o $(NAME)
 	@echo "\e[1;32m🎍 $(NAME) program created successfully ! 🎍\e[0m"
 
 clean:

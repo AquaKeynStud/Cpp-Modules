@@ -27,7 +27,7 @@ SRCS		=	main.cpp Harl.cpp
 
 all:	$(NAME)
 
-$(NAME):	$(SRCS) | Makefile
+$(NAME):	$(SRCS) Harl.hpp | Makefile
 	@$(CXX) $(CXXFLAGS) -I. $(SRCS) -o $(NAME)
 	@echo "\e[1;32m🎍 $(NAME) program created successfully ! 🎍\e[0m"
 

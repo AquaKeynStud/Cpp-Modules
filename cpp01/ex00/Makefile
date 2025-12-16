@@ -4,7 +4,7 @@ NAME := zombie
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ BASICS VARIABLES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
-CC				:=	c++
+CXX				:=	c++
 
 CFLAGS			:=	-Wall -Wextra -Werror -std=c++98
 
@@ -29,8 +29,8 @@ LST_INC		=	Zombie.hpp
 
 all:	$(NAME)
 
-$(NAME):	$(LST_SRC) | Makefile
-	@$(CC) $(CFLAGS) -I. $(LST_SRC) -o $(NAME)
+$(NAME):	$(LST_SRC) Zombie.hpp | Makefile
+	@$(CXX) $(CFLAGS) -I. $(LST_SRC) -o $(NAME)
 	@echo "\e[1;32m🎍 $(NAME) program created successfully ! 🎍\e[0m"
 
 clean:
