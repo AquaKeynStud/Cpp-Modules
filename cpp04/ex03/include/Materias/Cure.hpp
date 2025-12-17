@@ -4,6 +4,10 @@
 /* -- Includes -- */
 #include "AMateria.hpp"
 
+/* -- Colors -- */
+#define NEW_CURE	"\e[38;2;160;250;150;1m"
+#define DES_CURE	"\e[38;2;80;170;80;1m"
+
 /* -- Class -- */
 class Cure : public AMateria
 {

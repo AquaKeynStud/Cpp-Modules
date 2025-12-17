@@ -10,12 +10,7 @@ Ice::Ice(const Ice& toCopy) : AMateria("ice") { std::cout << NEW_ICE << "❄️ 
 Ice::~Ice() { std::cout << DES_ICE << "🧊 Ice materia destroyed 🧊" << RESET; }
 
 /* -- Assignment operator -- */
-Ice& Ice::operator=(const Ice& other)
-{
-	if (this == &other)
-		return (*this);
+Ice& Ice::operator=(const Ice& other) { return (*this); }
 
-	_type = "ice";
-
-	return (*this);
-}
+/* -- Methods -- */
+void Ice::use(ICharacter& target) { std::cout << "\e[1m* shoots an ice bolt at " << target.getName() << " *\e[0m\n"; }
