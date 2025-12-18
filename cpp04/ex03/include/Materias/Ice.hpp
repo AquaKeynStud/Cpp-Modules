@@ -17,9 +17,10 @@ public:
 
 	~Ice();
 
-	Ice&	operator=(const Ice& other);
+	Ice&		operator=(const Ice& other);
 
-	void	use(ICharacter& target);
+	AMateria*	clone() const;
+	void		use(ICharacter& target);
 };
 
 #endif

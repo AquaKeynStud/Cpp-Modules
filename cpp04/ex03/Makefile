@@ -29,12 +29,16 @@ vpath %.cpp $(D_SRC):$(D_SRC)AMateria:$(CURDIR)
 vpath %.hpp $(D_INC)
 
 # file lists
-SRCS		=	main.cpp		\
-				AMateria.cpp	\
-				ICharacter.cpp
+SRCS		=	main.cpp			\
+				Ice.cpp				\
+				Cure.cpp			\
+				AMateria.cpp		\
+				Character.cpp		\
+				MateriaSource.cpp
 
-INCS		=	$(addprefix $(D_INC), ICharacter.hpp)			\
-				$(addprefix $(D_INC)Materias/, AMateria.hpp)
+INCS		=	$(addprefix $(D_INC), Character.hpp)									\
+				$(addprefix $(D_INC)Materias/, AMateria.hpp Cure.hpp Ice.hpp)			\
+				$(addprefix $(D_INC)Interfaces/, ICharacter.hpp IMateriaSource.hpp)
 
 OBJS		=	$(addprefix $(D_OBJ), $(SRCS:.cpp=.o))
 

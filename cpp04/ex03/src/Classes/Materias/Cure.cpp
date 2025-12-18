@@ -13,4 +13,6 @@ Cure::~Cure() { std::cout << DES_CURE << "🍈 Cure materia destroyed 🍈" << R
 Cure& Cure::operator=(const Cure& other) { return (*this); }
 
 /* -- Methods -- */
+AMateria* Cure::clone() const { return (new Cure(*this)); }
+
 void Cure::use(ICharacter& target) { std::cout << "\e[1m* heals " << target.getName() << "'s wounds *\e[0m\n"; }

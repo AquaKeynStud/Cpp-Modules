@@ -13,4 +13,6 @@ Ice::~Ice() { std::cout << DES_ICE << "🧊 Ice materia destroyed 🧊" << RESET
 Ice& Ice::operator=(const Ice& other) { return (*this); }
 
 /* -- Methods -- */
+AMateria* Ice::clone() const { return (new Ice(*this)); }
+
 void Ice::use(ICharacter& target) { std::cout << "\e[1m* shoots an ice bolt at " << target.getName() << " *\e[0m\n"; }
