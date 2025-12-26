@@ -25,8 +25,8 @@ D_INC		=	include/
 
 D_OBJ		=	.objs/
 
-vpath %.cpp $(D_SRC):$(D_SRC)AMateria:$(CURDIR)
-vpath %.hpp $(D_INC)
+vpath %.cpp $(D_SRC):$(D_SRC)Classes:$(D_SRC)Classes/Materias:$(CURDIR)
+vpath %.hpp $(D_INC):$(D_INC)Interfaces:$(D_INC)Materias
 
 # file lists
 SRCS		=	main.cpp			\
@@ -36,13 +36,13 @@ SRCS		=	main.cpp			\
 				Character.cpp		\
 				MateriaSource.cpp
 
-INCS		=	$(addprefix $(D_INC), Character.hpp)									\
+INCS		=	$(addprefix $(D_INC), Character.hpp MateriaSource.hpp)									\
 				$(addprefix $(D_INC)Materias/, AMateria.hpp Cure.hpp Ice.hpp)			\
 				$(addprefix $(D_INC)Interfaces/, ICharacter.hpp IMateriaSource.hpp)
 
 OBJS		=	$(addprefix $(D_OBJ), $(SRCS:.cpp=.o))
 
-INC			=	-I$(D_INC) -I$(D_INC)Materias
+INC			=	-I$(D_INC) -I$(D_INC)Materias -I$(D_INC)Interfaces
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ RULES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 

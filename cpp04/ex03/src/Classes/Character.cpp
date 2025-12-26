@@ -6,8 +6,6 @@ Character::Character(const std::string& name) : _name(name)
 {
 	for (int i = 0; i < 4; i++)
 		_inventory[i] = NULL;
-
-	std::cout << CREATE << "🎎 New character named '" << name << "' is born 🎎" << RESET;
 }
 
 /* -- Copy Constructor -- */
@@ -19,8 +17,6 @@ Character::Character(const Character& toCopy) : _name(toCopy._name)
 		if (_inventory[i])
 			_inventory[i] = toCopy._inventory[i]->clone();
 	}
-
-	std::cout << CREATE << "🎎 New clone of character named '" << toCopy._name << "' is born  🎎" << RESET;
 }
 
 /* -- Destructor -- */
@@ -29,8 +25,6 @@ Character::~Character()
 	for (int i = 0; i < 4; i++)
 		if (_inventory[i])
 			delete _inventory[i];
-
-	std::cout << DESTROY << "🪦 Character '" << _name << "' died...  🪦" << RESET;
 }
 
 /* -- Assignment operator -- */
@@ -47,7 +41,7 @@ Character& Character::operator=(const Character& other)
 
 		_inventory[i] = NULL;
 		if (other._inventory[i])
-			_inventory[i] = other._inventory[i]->clone();			
+			_inventory[i] = other._inventory[i]->clone();
 	}
 
 	return (*this);

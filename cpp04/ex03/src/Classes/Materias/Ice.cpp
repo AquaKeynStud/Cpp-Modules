@@ -2,15 +2,19 @@
 #include <iostream>
 
 /* -- Constructors -- */
-Ice::Ice() : AMateria("ice") { std::cout << NEW_ICE << "❄️ New Ice materia created ! ❄️" << RESET; }
+Ice::Ice() : AMateria("ice") {}
 
-Ice::Ice(const Ice& toCopy) : AMateria("ice") { std::cout << NEW_ICE << "❄️ New copy of Ice materia created ! ❄️" << RESET; }
+Ice::Ice(const Ice& toCopy) : AMateria("ice") { (void)toCopy; }
 
 /* -- Destructor -- */
-Ice::~Ice() { std::cout << DES_ICE << "🧊 Ice materia destroyed 🧊" << RESET; }
+Ice::~Ice() {}
 
 /* -- Assignment operator -- */
-Ice& Ice::operator=(const Ice& other) { return (*this); }
+Ice& Ice::operator=(const Ice& other)
+{
+	(void)other;
+	return (*this);
+}
 
 /* -- Methods -- */
 AMateria* Ice::clone() const { return (new Ice(*this)); }

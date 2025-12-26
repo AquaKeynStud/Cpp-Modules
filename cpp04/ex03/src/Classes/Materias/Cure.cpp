@@ -2,15 +2,19 @@
 #include <iostream>
 
 /* -- Constructors -- */
-Cure::Cure() : AMateria("cure") { std::cout << NEW_CURE << "🔋 New Cure materia created ! 🔋" << RESET; }
+Cure::Cure() : AMateria("cure") {}
 
-Cure::Cure(const Cure& toCopy) : AMateria("cure") { std::cout << NEW_CURE << "🔋 New copy of Cure materia created ! 🔋" << RESET; }
+Cure::Cure(const Cure& toCopy) : AMateria("cure") { (void)toCopy; }
 
 /* -- Destructor -- */
-Cure::~Cure() { std::cout << DES_CURE << "🍈 Cure materia destroyed 🍈" << RESET; }
+Cure::~Cure() {}
 
 /* -- Assignment operator -- */
-Cure& Cure::operator=(const Cure& other) { return (*this); }
+Cure& Cure::operator=(const Cure& other)
+{
+	(void)other;
+	return (*this);
+}
 
 /* -- Methods -- */
 AMateria* Cure::clone() const { return (new Cure(*this)); }
