@@ -44,6 +44,74 @@ std::ostream& operator<<( std::ostream& os, const Fixed& fixed )
 
 /* -- Ex02 Functions here -- */
 
+Fixed Fixed::operator+( const Fixed& other ) const
+{
+	Fixed	res;
+
+	res.setRawBits( _fixed + other.getRawBits() );
+	return (res); 
+}
+
+Fixed Fixed::operator-( const Fixed& other ) const
+{
+	Fixed	res;
+
+	res.setRawBits( _fixed - other.getRawBits() );
+	return (res); 
+}
+
+Fixed Fixed::operator*( const Fixed& other ) const
+{
+	Fixed	res;
+
+	res.setRawBits( (_fixed * other.getRawBits()) >> _fractionnal );
+	return (res);
+}
+
+Fixed Fixed::operator/( const Fixed& other ) const
+{
+	Fixed	res;
+
+	if (not other.getRawBits())
+	{
+		std::cout << "\e[31;1m🈲 Error: Division by 0 🈲\e[0m" << std::endl;
+		res.setRawBits( std::numeric_limits<int>::max() );
+	}
+	else
+		res.setRawBits( (_fixed << _fractionnal) / other.getRawBits() );
+	return (res);
+}
+
+Fixed	Fixed::operator++( int )		// post-increment
+{
+	Fixed	tmp;
+	tmp = *this;
+	_fixed++;
+
+	return (tmp);
+}
+
+Fixed	Fixed::operator--( int )		// post-decrement
+{
+	Fixed	tmp;
+	tmp = *this;
+	_fixed--;
+
+	return (tmp);
+}
+
+Fixed&	Fixed::operator++( void )		// pre-increment
+{
+	_fixed++;
+	return (*this);
+}
+
+Fixed&	Fixed::operator--( void )		// pre-decrement
+{
+	_fixed--;
+	return (*this);
+}
+
 bool Fixed::operator<( const Fixed& other ) const
 {
 	return (_fixed < other.getRawBits());
@@ -72,74 +140,6 @@ bool Fixed::operator==( const Fixed& other ) const
 bool Fixed::operator!=( const Fixed& other ) const
 {
 	return (_fixed != other.getRawBits());
-}
-
-Fixed Fixed::operator+( const Fixed& other )
-{
-	Fixed	res;
-
-	res.setRawBits( _fixed + other.getRawBits() );
-	return (res); 
-}
-
-Fixed	Fixed::operator++( int )
-{
-	Fixed	tmp;
-	tmp = *this;
-	_fixed++;
-
-	return (tmp);
-}
-
-Fixed	Fixed::operator--( int )
-{
-	Fixed	tmp;
-	tmp = *this;
-	_fixed--;
-
-	return (tmp);
-}
-
-Fixed&	Fixed::operator++( void )
-{
-	_fixed++;
-	return (*this);
-}
-
-Fixed&	Fixed::operator--( void )
-{
-	_fixed--;
-	return (*this);
-}
-
-Fixed Fixed::operator-( const Fixed& other )
-{
-	Fixed	res;
-
-	res.setRawBits( _fixed - other.getRawBits() );
-	return (res); 
-}
-
-Fixed Fixed::operator*( const Fixed& other )
-{
-	Fixed	res;
-
-	res.setRawBits( (_fixed * other.getRawBits()) >> _fractionnal );
-	return (res);
-}
-
-Fixed Fixed::operator/( const Fixed& other )
-{
-	Fixed	res;
-
-	if (not other.getRawBits())
-	{
-		std::cout << "\e[31;1m🈲 Error: Division by 0 🈲\e[0m" << std::endl;
-		res.setRawBits( std::numeric_limits<int>::max() );
-	}
-	else
-		res.setRawBits( (_fixed << _fractionnal) / other.getRawBits() );
-	return (res);
 }
 
 Fixed&	Fixed::min( Fixed& a, Fixed& b ) { return (a < b ? a : b); }

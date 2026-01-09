@@ -19,16 +19,16 @@ public:
 	~Fixed();
 
 // Arithmetic operators //
-	Fixed	operator+( const Fixed& other );	// <- new
-	Fixed	operator-( const Fixed& other );	// <- new
-	Fixed	operator*( const Fixed& other );	// <- new
-	Fixed	operator/( const Fixed& other );	// <- new
+	Fixed	operator+( const Fixed& other ) const;	// <- new
+	Fixed	operator-( const Fixed& other ) const;	// <- new
+	Fixed	operator*( const Fixed& other ) const;	// <- new
+	Fixed	operator/( const Fixed& other ) const;	// <- new
 
 // Increment/Decrement operators //
-	Fixed	operator++( int );		// <- new
-	Fixed	operator--( int );		// <- new
-	Fixed&	operator++( void );		// <- new
-	Fixed&	operator--( void );		// <- new
+	Fixed	operator++( int );						// <- new
+	Fixed	operator--( int );						// <- new
+	Fixed&	operator++( void );						// <- new
+	Fixed&	operator--( void );						// <- new
 	
 // Comparison operators //
 	bool	operator<( const Fixed& other ) const;	// <- new

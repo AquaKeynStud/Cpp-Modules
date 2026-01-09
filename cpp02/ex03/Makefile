@@ -27,7 +27,7 @@ SRCS		=	main.cpp Fixed.cpp Point.cpp
 
 all:	$(NAME)
 
-$(NAME):	$(SRCS) | Makefile
+$(NAME):	$(SRCS) Fixed.hpp Point.hpp | Makefile
 	@$(CXX) $(CXXFLAGS) -I. $(SRCS) -o $(NAME)
 	@echo "\e[1;32m🎍 $(NAME) program created successfully ! 🎍\e[0m"
 
