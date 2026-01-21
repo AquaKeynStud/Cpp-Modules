@@ -4,19 +4,23 @@
 
 int main()
 {
-	ClapTrap a("Clap");
-	ScavTrap b("Scav");
-	FragTrap c("Frag");
+	ClapTrap a;
+	ScavTrap b;
+	FragTrap c;
 
-	std::cout << "A energy: " << a.getEnergyPts() << std::endl;
 	a.takeDamage(2);
 	a.beRepaired(1);
-	std::cout << "A energy: " << a.getEnergyPts() << std::endl;
 
 	b.guardGate();
 	c.highFiveGuys();
 
+	c.attack("Another FragTrap");
+	c.takeDamage(5);
+	c.beRepaired(20);
+	c.takeDamage(80000);
+	c.highFiveGuys();
+
 	b.attack("Frag");
-	c.takeDamage(b.getAttackDmg());
-	std::cout << "Frag Hit Pts: " << c.getHitPts() << std::endl;
+
+	return (0);
 }

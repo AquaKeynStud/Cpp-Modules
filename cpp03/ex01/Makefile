@@ -27,8 +27,8 @@ SRCS		=	main.cpp ClapTrap.cpp ScavTrap.cpp
 
 all:	$(NAME)
 
-$(NAME):	$(SRCS) ClapTrap.hpp | Makefile
-	@$(CXX) $(CXXFLAGS) -I. $(SRCS) -o $(NAME)
+$(NAME):	$(SRCS) ClapTrap.hpp ScavTrap.hpp | Makefile
+	$(CXX) $(CXXFLAGS) -I. $(SRCS) -o $(NAME)
 	@echo "\e[1;32m🎍 $(NAME) program created successfully ! 🎍\e[0m"
 
 clean:

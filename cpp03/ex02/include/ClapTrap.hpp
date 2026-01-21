@@ -11,7 +11,7 @@
 #define	RED		"\e[31;1m"
 #define	GREEN	"\e[32;1m"
 
-#define HEAL	"\e[38;2;150;255;190;1m"
+#define HEAL	"\e[38;2;130;255;190;1m"
 #define ATTK	"\e[38;2;200;150;255;1m"
 #define DMGS	"\e[38;2;200;0;0;1m"
 
@@ -25,26 +25,17 @@ protected:
 	unsigned int	_attack_dmg;
 
 public:
-// Constructors //
+	ClapTrap();
 	ClapTrap(const std::string& name);
 	ClapTrap(const ClapTrap& toCopy);
 
-// Destructor //
-	virtual ~ClapTrap();
+	~ClapTrap();
 
-// Assignment operator //
 	ClapTrap&	operator=(const ClapTrap& other);
 
-// Getters //
-	const std::string&	getName() const;
-	int					getHitPts() const;
-	int					getEnergyPts() const;
-	int					getAttackDmg() const;
-
-// Methods //
-	void				takeDamage(unsigned int amount);
-	void				beRepaired(unsigned int amount);
-	virtual void		attack(const std::string& target);
+	void	takeDamage(unsigned int amount);
+	void	beRepaired(unsigned int amount);
+	void	attack(const std::string& target);
 
 };
 

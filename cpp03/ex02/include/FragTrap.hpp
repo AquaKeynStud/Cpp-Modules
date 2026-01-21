@@ -7,21 +7,19 @@
 /* -- Colors -- */
 #define HIGHFIVE	"\e[38;2;210;255;210;1m"
 
+/* -- Class -- */
 class FragTrap : public ClapTrap
 {
 public:
-// Constructors //
+	FragTrap();
 	FragTrap(const std::string& name);
 	FragTrap(const FragTrap& toCopy);
 
-// Destructor //
 	~FragTrap();
 
-// Assignment operator //
 	FragTrap&	operator=(const FragTrap& other);
 
-// Methods //
-	void	highFiveGuys(void);
+	void	highFiveGuys(void);						// <- new
 
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);

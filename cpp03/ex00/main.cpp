@@ -7,15 +7,14 @@ int main()
 	ClapTrap b("Second");
 	ClapTrap c(b);
 
-	std::cout << "A energy: " << a.getEnergyPts() << std::endl;
 	a.takeDamage(2);
 	a.beRepaired(1);
-	std::cout << "A energy: " << a.getEnergyPts() << std::endl;
+	a.takeDamage(20000);
+	a.beRepaired(20000);
 
-	std::cout << "C name: " << c.getName() << std::endl;
-	c.attack(a.getName());
+	c.attack("First");
 
-	std::cout << "B name before =: " << b.getName() << std::endl;
 	b = a;
-		std::cout << "B name after =: " << b.getName() << std::endl;
+
+	return (0);
 }

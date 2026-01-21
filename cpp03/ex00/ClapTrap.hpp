@@ -4,7 +4,7 @@
 /* -- Includes -- */
 #include <string>
 
-/* -- Macros -- */
+/* -- Colors -- */
 #define BOLD	"\e[0;1m"
 #define	RESET	"\e[0m\n"
 
@@ -19,29 +19,20 @@
 class ClapTrap
 {
 private:
-	std::string	_name;
-	int			_hit_pts;
-	int			_energy_pts;
-	int			_attack_dmg;
+	std::string		_name;
+	unsigned int	_hit_pts;
+	unsigned int	_energy_pts;
+	unsigned int	_attack_dmg;
 
 public:
-// Constructors //
-	ClapTrap(std::string name);
+	ClapTrap();
+	ClapTrap(const std::string& name);
 	ClapTrap(const ClapTrap& toCopy);
 
-// Destructor //
 	~ClapTrap();
 
-// Assignment operator //
 	ClapTrap&	operator=(const ClapTrap& other);
 
-// Getters //
-	const std::string&	getName() const;
-	int				getHitPts() const;
-	int				getEnergyPts() const;
-	int				getAttackDmg() const;
-
-// Methods //
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 	void	attack(const std::string& target);
