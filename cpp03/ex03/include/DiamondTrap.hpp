@@ -16,19 +16,16 @@ private:
 	std::string	_name;
 
 public:
-// Constructors //
+	DiamondTrap();
 	DiamondTrap(const std::string& name);
 	DiamondTrap(const DiamondTrap& toCopy);
 
-// Destructor //
-	virtual ~DiamondTrap();
+	~DiamondTrap();
 
-// Assignment operator //
 	DiamondTrap&	operator=(const DiamondTrap& other);
 
-// Methods //
-	void	attack(const std::string& name);
 	void	whoAmI(void);
+	using	ScavTrap::attack;
 };
 
 #endif

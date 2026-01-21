@@ -1,8 +1,6 @@
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
-// #pragma once // alternative aux include guards
-
 /* -- Includes -- */
 #include "ClapTrap.hpp"
 
@@ -15,17 +13,14 @@ protected:
 	static const unsigned int	s_energy_pts = 50;
 
 public:
-// Constructors //
+	ScavTrap();
 	ScavTrap(const std::string& name);
 	ScavTrap(const ScavTrap& toCopy);
 
-// Destructor //
-	virtual ~ScavTrap();
+	~ScavTrap();
 
-// Assignment operator //
 	ScavTrap&	operator=(const ScavTrap& other);
 
-// Methods //
 	void	guardGate();
 
 	void	takeDamage(unsigned int amount);

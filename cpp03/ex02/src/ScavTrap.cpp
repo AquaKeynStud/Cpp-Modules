@@ -95,7 +95,6 @@ void ScavTrap::attack(const std::string& target)
 	std::cout << target << ATTK ". 💣" RESET;
 }
 
-/* -- New ex01 -- */
 void ScavTrap::guardGate()
 {
 	if (not _hit_pts)

@@ -2,92 +2,84 @@
 #include "ClapTrap.hpp"
 
 /* -- Constructors -- */
+ClapTrap::ClapTrap()
+	:	_name("Clap"),
+		_hit_pts(10),
+		_energy_pts(10),
+		_attack_dmg(0)
+{
+	std::cout << GREEN "🎍 ClapTrap " BOLD << _name;
+	std::cout << GREEN " created ! 🎍" RESET;
+}
+
 ClapTrap::ClapTrap(const std::string& name)
 	:	_name(name),
 		_hit_pts(10),
 		_energy_pts(10),
 		_attack_dmg(0)
 {
-	std::cout << GREEN << "🎍 ClapTrap ";
-	std::cout << BOLD << _name;
-	std::cout << GREEN << " created ! 🎍";
-	std::cout << RESET;
+	std::cout << GREEN "🎍 ClapTrap " BOLD << _name;
+	std::cout << GREEN " created ! 🎍" RESET;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& toCopy)
-	:	_name(toCopy.getName()),
-		_hit_pts(toCopy.getHitPts()),
-		_energy_pts(toCopy.getEnergyPts()),
-		_attack_dmg(toCopy.getAttackDmg())
+	:	_name(toCopy._name),
+		_hit_pts(toCopy._hit_pts),
+		_energy_pts(toCopy._energy_pts),
+		_attack_dmg(toCopy._attack_dmg)
 {
-	std::cout << GREEN << "🎋 ClapTrap ";
-	std::cout << BOLD << _name;
-	std::cout << GREEN << " copied ! 🎋";
-	std::cout << RESET;
+	std::cout << GREEN "🎋 ClapTrap " BOLD;
+	std::cout << _name << GREEN " copied ! 🎋" RESET;
 }
 
 /* -- Destructor -- */
 ClapTrap::~ClapTrap()
 {
-	std::cout << RED << "🍁 ClapTrap ";
-	std::cout << BOLD << _name;
-	std::cout << RED << " destroyed ! 🍁";
-	std::cout << RESET;
+	std::cout << RED "🍁 ClapTrap " BOLD << _name << RED " destroyed ! 🍁" RESET;
 }
 
 /* -- Assignment operator -- */
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
-	if (not (this == &other))
+	if (this != &other)
 	{
-		_name = other.getName();
-		_hit_pts = other.getHitPts();
-		_energy_pts = other.getEnergyPts();
-		_attack_dmg = other.getAttackDmg();
+		_name = other._name;
+		_hit_pts = other._hit_pts;
+		_energy_pts = other._energy_pts;
+		_attack_dmg = other._attack_dmg;
 	}
 
 	return (*this);
 }
 
-/* -- Getters -- */
-int ClapTrap::getHitPts() const { return (_hit_pts); }
-
-int ClapTrap::getEnergyPts() const { return (_energy_pts); }
-
-int ClapTrap::getAttackDmg() const { return (_attack_dmg); }
-
-const std::string& ClapTrap::getName() const { return (_name); }
-
 /* -- Methods -- */
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (not _hit_pts)
+	{
+		std::cout << RED "📛 ClapTrap " BOLD << _name << RED " is already dead ! 📛" RESET;
 		return;
+	}
 
-	if (_hit_pts < amount)
-		_hit_pts = 0;
-	else
-		_hit_pts -= amount;
+	std::cout << DMGS "🧨 ClapTrap " BOLD << _name;
+	std::cout << DMGS " took " RED << amount << DMGS << " damages. 🧨" RESET;
 
-	std::cout << DMGS << "🧨 ClapTrap ";
-	std::cout << BOLD << _name;
-	std::cout << DMGS << " took ";
-	std::cout << RED << amount;
-	std::cout << DMGS << " damages. 🧨";
-	std::cout << RESET;
+	if (amount > _hit_pts)
+		amount = _hit_pts;
+	_hit_pts -= amount;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (not _energy_pts or not _hit_pts)
+	if (not _hit_pts or not _energy_pts)
+	{
+		std::cout << RED "📛 ClapTrap " BOLD << _name << RED;
+		std::cout << (_hit_pts ? " is exhausted ! 📛" : " is dead ! 📛") << RESET;
 		return;
+	}
 
-	std::cout << HEAL << "♻️ ClapTrap ";
-	std::cout << BOLD << _name;
-	std::cout << HEAL << " repaired itself from ";
-	std::cout << RED << amount;
-	std::cout << HEAL << " damages. ♻️";
-	std::cout << RESET;
+	std::cout << HEAL "♻️ ClapTrap " BOLD << _name;
+	std::cout << HEAL " repaired itself from " RED << amount << HEAL " damages. ♻️" RESET;
 
 	_energy_pts--;
 	_hit_pts += amount;
@@ -95,17 +87,16 @@ void ClapTrap::beRepaired(unsigned int amount)
 
 void ClapTrap::attack(const std::string& target)
 {
-	if (not _energy_pts or not _hit_pts)
+	if (not _hit_pts or not _energy_pts)
+	{
+		std::cout << RED "📛 ClapTrap " BOLD << _name << RED;
+		std::cout << (_hit_pts ? " is exhausted ! 📛" : " is dead ! 📛") << RESET;
 		return;
+	}
 
 	_energy_pts--;
 
-	std::cout << ATTK << "💣 ClapTrap ";
-	std::cout << BOLD << _name;
-	std::cout << ATTK << " inflits ";
-	std::cout << RED << _attack_dmg;
-	std::cout << ATTK << " damages to ";
-	std::cout << BOLD << target;
-	std::cout << ATTK << ". 💣";
-	std::cout << RESET;
+	std::cout << ATTK "💣 ClapTrap " BOLD << _name;
+	std::cout << ATTK " inflits " RED << _attack_dmg << ATTK " damages to " BOLD;
+	std::cout << target << ATTK ". 💣" RESET;
 }

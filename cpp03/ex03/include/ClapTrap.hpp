@@ -25,26 +25,17 @@ protected:
 	unsigned int	_attack_dmg;
 
 public:
-// Constructors //
+	ClapTrap();
 	ClapTrap(const std::string& name);
 	ClapTrap(const ClapTrap& toCopy);
 
-// Destructor //
-	virtual ~ClapTrap();
+	~ClapTrap();
 
-// Assignment operator //
 	ClapTrap&	operator=(const ClapTrap& other);
 
-// Getters //
-	const std::string&	getName() const;
-	int					getHitPts() const;
-	int					getEnergyPts() const;
-	int					getAttackDmg() const;
-
-// Methods //
-	void				takeDamage(unsigned int amount);
-	void				beRepaired(unsigned int amount);
-	virtual void		attack(const std::string& target);
+	void		takeDamage(unsigned int amount);
+	void		beRepaired(unsigned int amount);
+	void		attack(const std::string& target);
 
 };
 

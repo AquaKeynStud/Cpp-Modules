@@ -2,34 +2,39 @@
 #include "FragTrap.hpp"
 
 /* -- Constructors -- */
+FragTrap::FragTrap()
+	:	ClapTrap("Frag")
+{
+	_hit_pts = 100;
+	_energy_pts = 100;
+	_attack_dmg = 30;
+
+	std::cout << GREEN "🎍 FragTrap " BOLD << _name;
+	std::cout << GREEN " created ! 🎍" RESET;
+}
+
 FragTrap::FragTrap(const std::string& name)
 	:	ClapTrap(name)
 {
-	_hit_pts = f_hit_pts;
+	_hit_pts = 100;
 	_energy_pts = 100;
-	_attack_dmg = f_attack_dmg;
+	_attack_dmg = 30;
 
-	std::cout << GREEN << "🎍 FragTrap ";
-	std::cout << BOLD << _name;
-	std::cout << GREEN << " created ! 🎍";
-	std::cout << RESET;
+	std::cout << GREEN "🎍 FragTrap🔪 " BOLD << _name;
+	std::cout << GREEN " created ! 🎍" RESET;
 }
 
 FragTrap::FragTrap(const FragTrap& toCopy) : ClapTrap(toCopy)
 {
-	std::cout << GREEN << "🎋 FragTrap ";
-	std::cout << BOLD << _name;
-	std::cout << GREEN << " copied ! 🎋";
-	std::cout << RESET;
+	std::cout << GREEN "🎋 FragTrap🔪 " BOLD << _name;
+	std::cout << GREEN " copied ! 🎋" RESET;
 }
 
 /* -- Destructor -- */
 FragTrap::~FragTrap()
 {
-	std::cout << RED << "🍁 FragTrap ";
-	std::cout << BOLD << _name;
-	std::cout << RED << " destroyed ! 🍁";
-	std::cout << RESET;
+	std::cout << RED << "🍁 FragTrap🔪 " BOLD << _name;
+	std::cout << RED << " destroyed ! 🍁" RESET;
 }
 
 /* -- Assignment operator -- */
@@ -44,30 +49,31 @@ FragTrap& FragTrap::operator=(const FragTrap& other)
 /* -- Public Methods -- */
 void FragTrap::takeDamage(unsigned int amount)
 {
-	if (not _energy_pts or not _hit_pts)
+	if (not _hit_pts)
+	{
+		std::cout << RED "📛 FragTrap " BOLD << _name << RED " is already dead ! 📛" RESET;
 		return;
+	}
 
-	std::cout << DMGS << "🧨 FragTrap ";
-	std::cout << BOLD << _name;
-	std::cout << DMGS << " took ";
-	std::cout << RED << amount;
-	std::cout << DMGS << " damages. 🧨";
-	std::cout << RESET;
+	std::cout << DMGS "🧨 FragTrap " BOLD << _name << DMGS " took " RED;
+	std::cout << amount << DMGS " damages. 🧨" RESET;
 
+	if (amount > _hit_pts)
+		amount = _hit_pts;
 	_hit_pts -= amount;
 }
 
 void FragTrap::beRepaired(unsigned int amount)
 {
-	if (not _energy_pts or not _hit_pts)
+	if (not _hit_pts or not _energy_pts)
+	{
+		std::cout << RED "📛 FragTrap " BOLD << _name << RED;
+		std::cout << (_hit_pts ? " is exhausted ! 📛" : " is dead ! 📛") << RESET;
 		return;
+	}
 
-	std::cout << HEAL << "♻️ FragTrap ";
-	std::cout << BOLD << _name;
-	std::cout << HEAL << " repaired itself from ";
-	std::cout << RED << amount;
-	std::cout << HEAL << " damages. ♻️";
-	std::cout << RESET;
+	std::cout << HEAL "♻️ FragTrap " BOLD << _name;
+	std::cout << HEAL " repaired itself from " RED << amount << HEAL " damages. ♻️" RESET;
 
 	_energy_pts--;
 	_hit_pts += amount;
@@ -75,26 +81,29 @@ void FragTrap::beRepaired(unsigned int amount)
 
 void FragTrap::attack(const std::string& target)
 {
-	if (not _energy_pts or not _hit_pts)
+	if (not _hit_pts or not _energy_pts)
+	{
+		std::cout << RED "📛 FragTrap " BOLD << _name << RED;
+		std::cout << (_hit_pts ? " is exhausted ! 📛" : " is dead ! 📛") << RESET;
 		return;
+	}
 
 	_energy_pts--;
 
-	std::cout << ATTK << "💣 FragTrap ";
-	std::cout << BOLD << _name;
-	std::cout << ATTK << " inflits ";
-	std::cout << RED << _attack_dmg;
-	std::cout << ATTK << " damages to ";
-	std::cout << BOLD << target;
-	std::cout << ATTK << ". 💣";
-	std::cout << RESET;
+	std::cout << ATTK "💣 FragTrap " BOLD << _name;
+	std::cout << ATTK " inflits " RED << _attack_dmg << ATTK " damages to " BOLD;
+	std::cout << target << ATTK ". 💣" RESET;
 }
 
 /* -- New ex02 -- */
 void FragTrap::highFiveGuys(void)
 {
-	std::cout << HIGHFIVE << "🕊️ FragTrap ";
-	std::cout << BOLD << _name;
-	std::cout << HIGHFIVE << " wants a high five ! 🕊️";
-	std::cout << RESET;
+	if (not _hit_pts)
+	{
+		std::cout << RED "📛 FragTrap " BOLD << _name << RED " is already dead ! 📛" RESET;
+		return;
+	}
+
+	std::cout << HIGHFIVE << "🕊️ FragTrap " BOLD << _name;
+	std::cout << HIGHFIVE << " wants a high five ! 🕊️" RESET;
 }

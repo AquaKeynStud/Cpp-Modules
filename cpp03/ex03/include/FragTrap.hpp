@@ -14,17 +14,14 @@ protected:
 	static const unsigned int	f_attack_dmg = 30;
 
 public:
-// Constructors //
+	FragTrap();
 	FragTrap(const std::string& name);
 	FragTrap(const FragTrap& toCopy);
 
-// Destructor //
-	virtual ~FragTrap();
+	~FragTrap();
 
-// Assignment operator //
 	FragTrap&	operator=(const FragTrap& other);
 
-// Methods //
 	void	highFiveGuys(void);
 
 	void	takeDamage(unsigned int amount);
