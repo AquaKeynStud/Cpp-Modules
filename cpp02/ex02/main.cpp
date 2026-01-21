@@ -15,6 +15,10 @@ int main( void ) {
 	std::cout << b << std::endl;
 	std::cout << c << std::endl;
 
+	Fixed d = b - a * Fixed(2);
+
+	std::cout << "d equals " << b << " - " << a << ": " << d << std::endl;
+
 	std::cout << Fixed::max( a, b ) << std::endl;
 
 	return 0;

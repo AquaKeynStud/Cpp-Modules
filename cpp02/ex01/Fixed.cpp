@@ -11,8 +11,7 @@ Fixed::~Fixed() { std::cout << "Destructor called\n"; }
 Fixed::Fixed( const Fixed& other ) : _fixed(other.getRawBits())
 {
 	std::cout << "Copy constructor called\n";
-
-	std::cout << "Copy assignement operator called\n"; // exo utilise *this = other, donc appelle overload =. Moi non, donc simulation
+	*this = other;
 }
 
 Fixed &Fixed::operator=( const Fixed& other )
@@ -21,7 +20,7 @@ Fixed &Fixed::operator=( const Fixed& other )
 
 	if (this != &other)
 		_fixed = other.getRawBits();
-	
+
 	return (*this);
 }
 
