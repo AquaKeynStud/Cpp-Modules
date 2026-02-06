@@ -28,8 +28,8 @@ D_OBJ		=	.objs/
 vpath %.cpp $(D_SRC):$(CURDIR)
 
 # file lists
-SRCS		=	main.cpp Animal.cpp Dog.cpp Cat.cpp
-INCS		=	$(addprefix $(D_INC), Animal.hpp Dog.hpp Cat.hpp)
+SRCS		=	main.cpp Animal.cpp WrongAnimal.cpp Dog.cpp Cat.cpp WrongCat.cpp
+INCS		=	$(addprefix $(D_INC), Animal.hpp WrongAnimal.hpp Dog.hpp Cat.hpp WrongCat.hpp)
 OBJS		=	$(addprefix $(D_OBJ), $(SRCS:.cpp=.o))
 
 INC			=	-I$(D_INC)

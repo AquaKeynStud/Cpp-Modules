@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongCat.hpp"
 
 static void animals()
 {
@@ -65,6 +66,15 @@ int main()
 	delete i;
 	delete j;
 	delete meta;
+
+	std::cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+
+	const WrongAnimal* wrong_meta = new WrongAnimal();
+	const WrongAnimal* wrong_cat = new WrongCat();
+	std::cout << wrong_meta->getType() << " " << std::endl;
+	std::cout << wrong_cat->getType() << " " << std::endl;
+	wrong_meta->makeSound();
+	wrong_cat->makeSound();
 
 	std::cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
 	animals();
