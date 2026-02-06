@@ -16,10 +16,16 @@ typedef unsigned int uint;
 # define ERROR "\e[1;31m"
 #endif
 
+#ifndef INFO
+# define INFO "\e[1;38;2;120;170;255m"
+#endif
+
 #define	CREATE	"\e[1;38;2;110;255;180m"
 #define DESTROY	"\e[1;38;2;255;110;110m"
 
 /* -- Class -- */
+class Form;
+
 class Bureaucrat
 {
 private:
@@ -42,6 +48,9 @@ public:
 // Setters //
 	void				demote(void);
 	void				promote(void);
+
+// Other methods //
+	void				signForm(Form& form);
 
 // Exception //
 	class GradeTooLowException : public std::exception

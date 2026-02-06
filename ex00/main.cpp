@@ -24,11 +24,11 @@ int main()
 			cout << worker << RESET;
 			cout << unknown << RESET;
 
-			cout << CATEGORY "▶ Rétrogradation" RESET;
+			cout << CATEGORY "🔅 Rétrogradation" RESET;
 			boss.demote();
 			cout << "⬇ boss grade = " << boss.getGrade() << RESET;
 
-			cout << CATEGORY "▶ Promotion" RESET;
+			cout << CATEGORY "🔅 Promotion" RESET;
 			boss.promote();
 			cout << "⬆ boss grade = " << boss.getGrade() << RESET;
 		}
@@ -39,7 +39,7 @@ int main()
 	}
 
 	/* -- CONSTRUCTEUR KO -- */
-	cout << CATEGORY "\n▶ Création invalide\n" RESET;
+	cout << CATEGORY "\n🔅 Création invalide\n" RESET;
 
 	{
 		try
@@ -75,7 +75,7 @@ int main()
 
 
 	/* -- LIMITE PROMOTION -- */
-	cout << CATEGORY "\n▶ Promotion limite\n" RESET;
+	cout << CATEGORY "\n🔅 Promotion limite\n" RESET;
 
 	{
 		Bureaucrat boss("Boss", 1);

@@ -3,19 +3,9 @@
 
 /* -- Includes -- */
 #include <string>
-
-/* -- Typedefs -- */
-typedef unsigned int uint;
+#include "Bureaucrat.hpp"
 
 /* -- Colors -- */
-#ifndef RESET
-# define RESET "\e[0m\n"
-#endif
-
-#ifndef ERROR
-# define ERROR "\e[1;31m"
-#endif
-
 #define	NEW_FORM	"\e[1;38;2;150;255;240m"
 #define	NO_FORM		"\e[1;38;2;255;205;150m"
 
@@ -28,8 +18,6 @@ private:
 	const unsigned int	_sign_grade;
 	const unsigned int	_exec_grade;
 
-	void				beSigned();
-
 public:
 	Form();
 	Form(const Form& toCopy);
@@ -39,14 +27,14 @@ public:
 
 	Form& operator=(const Form& other);
 
+// Setters //
+	void				beSigned(const Bureaucrat& bureaucrat);
+
 // Getters //
 	const std::string&	getName(void) const;
 	bool				getSigned(void) const;
 	unsigned int		getSignGrade(void) const;
 	unsigned int		getExecGrade(void) const;
-
-// Setters //
-	void				signForm() const;
 
 // Exceptions //
 	class GradeTooLowException : public std::exception

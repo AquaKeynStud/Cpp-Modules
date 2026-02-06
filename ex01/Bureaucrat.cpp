@@ -1,6 +1,6 @@
 /* -- Includes -- */
 #include <iostream>
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /* -- Class definition -- */
 Bureaucrat::Bureaucrat() : _name("Unknown"), _grade(150)
@@ -59,6 +59,23 @@ void Bureaucrat::promote()
 	_grade--;
 }
 
+/* -- Other methods -- */
+void Bureaucrat::signForm(Form& form)
+{
+	if (form.getSigned())
+	{
+		std::cout << _name << " couldn't sign " << form.getName() << " because the form is already signed.\n";
+		return ;
+	}
+
+	form.beSigned(*this);
+
+	if (form.getSigned())
+		std::cout << _name << " signed " << form.getName() << ".\n";
+	else
+		std::cout << _name << " couldn't sign " << form.getName() << " because his grade is too low.\n";
+}
+
 /* -- Exceptions definitions -- */
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
@@ -73,6 +90,7 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 /* -- Other functions -- */
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
 {
+	os << "🌐 \e[1m";
 	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
 	return (os);
 }

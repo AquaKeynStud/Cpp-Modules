@@ -6,7 +6,7 @@
 /* -- usings -- */
 using std::cout;
 
-/* -- Methods -- */
+/* -- Constructors -- */
 Form::Form() : _name("Default Form"), _signed(false), _sign_grade(150), _exec_grade(150)
 {
 	cout << NEW_FORM "📜 New default Form created 📜" RESET;
@@ -26,12 +26,13 @@ Form::Form(const std::string& name, uint grade, uint exec)
 {
 	if (grade < 1 or exec < 1)
 		grade < exec ? throw GradeTooLowException(grade) : throw GradeTooLowException(exec);
-	else if (grade > 1 or exec > 1)
+	else if (grade > 150 or exec > 150)
 		grade > exec ? throw GradeTooHighException(grade) : throw GradeTooHighException(exec);
 
-	cout << NEW_FORM "📜 New default Form created 📜" RESET;
+	cout << NEW_FORM "📜 Form [" << _name << "] created 📜" RESET;
 }
 
+/* -- Destructor -- */
 Form::~Form() { cout << NO_FORM "📌 Form named [" << _name << "] destroyed 📌" RESET; }
 
 Form& Form::operator=(const Form& other)
@@ -42,11 +43,32 @@ Form& Form::operator=(const Form& other)
 	return (*this);
 }
 
+/* -- Setters -- */
+void Form::beSigned(const Bureaucrat& bureaucrat)
+{
+	if (_signed)
+		return ;
+
+	if (bureaucrat.getGrade() > _sign_grade)
+		throw GradeTooLowException(bureaucrat.getGrade());
+
+	_signed = true;
+}
+
+/* -- Getters -- */
+const std::string& Form::getName() const { return (_name); }
+
+bool Form::getSigned() const { return (_signed); }
+
+unsigned int Form::getSignGrade() const { return (_sign_grade); }
+
+unsigned int Form::getExecGrade() const { return (_exec_grade); }
+
 /* -- Exceptions -- */
 Form::GradeTooLowException::GradeTooLowException(unsigned int grade)
 {
 	std::ostringstream	oss;
-	oss << ERROR "The passed grade: " << grade << "is too low" RESET;
+	oss << ERROR "The passed grade: " << grade << " is too low" RESET;
 	_msg = oss.str();
 }
 
@@ -60,7 +82,7 @@ const char* Form::GradeTooLowException::what() const throw()
 Form::GradeTooHighException::GradeTooHighException(unsigned int grade)
 {
 	std::ostringstream	oss;
-	oss << ERROR "The passed grade: " << grade << "is too high" RESET;
+	oss << ERROR "The passed grade: " << grade << " is too high" RESET;
 	_msg = oss.str();
 }
 
@@ -74,9 +96,10 @@ const char* Form::GradeTooHighException::what() const throw()
 /* -- Other functions -- */
 std::ostream& operator<<(std::ostream& os, const Form& form)
 {
+	os << "🌐 \e[1m";
 	os << form.getName();
-	os << (form.getSigned() ? "is signed" : "is unsigned");
+	os << (form.getSigned() ? " is signed. " : " is unsigned. ");
 	os << "Grade required to sign: " << form.getSignGrade() << ". ";
-	os << "Grade required to sign: " << form.getSignGrade() << ".";
+	os << "Grade required to execute it: " << form.getExecGrade() << ".";
 	return (os);
 }
