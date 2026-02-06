@@ -32,7 +32,7 @@ int main()
 		}
 		catch (std::exception& e)
 		{
-			cout << ERROR "❌ Exception inattendue: " << e.what();
+			cout << ERROR "❌ Exception inattendue: " << e.what() << RESET;
 		}
 
 		cout << "\n\e[1m______________________________________________________\n" RESET;
@@ -50,7 +50,7 @@ int main()
 		}
 		catch(const std::exception& e)
 		{
-			cout << ERROR "❌ Exception inattendue: " << e.what();
+			cout << ERROR "❌ Exception inattendue: " << e.what() << RESET;
 		}
 
 		try
@@ -59,7 +59,7 @@ int main()
 		}
 		catch(const std::exception& e)
 		{
-			cout << ERROR "📛 Exception attrapée (comportement attendu): " << e.what();
+			cout << ERROR "📛 Exception attrapée (comportement attendu): " << e.what() << RESET;
 		}
 
 		try
@@ -68,7 +68,7 @@ int main()
 		}
 		catch(const std::exception& e)
 		{
-			cout << ERROR "📛 Exception attrapée (comportement attendu): " << e.what();
+			cout << ERROR "📛 Exception attrapée (comportement attendu): " << e.what() << RESET;
 		}
 
 		cout << contract << RESET;
@@ -86,7 +86,7 @@ int main()
 		}
 		catch (const std::exception& e)
 		{
-			cout << ERROR "📛 Exception attrapée (comportement attendu): " << e.what();
+			cout << ERROR "📛 Exception attrapée (comportement attendu): " << e.what() << RESET;
 		}
 
 		try
@@ -96,7 +96,7 @@ int main()
 		}
 		catch (const std::exception& e)
 		{
-			cout << ERROR "📛 Exception attrapée (comportement attendu): " << e.what();
+			cout << ERROR "📛 Exception attrapée (comportement attendu): " << e.what() << RESET;
 		}
 
 		cout << "\n\e[1m______________________________________________________\n" RESET;

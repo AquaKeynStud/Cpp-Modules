@@ -68,7 +68,7 @@ unsigned int Form::getExecGrade() const { return (_exec_grade); }
 Form::GradeTooLowException::GradeTooLowException(unsigned int grade)
 {
 	std::ostringstream	oss;
-	oss << ERROR "The passed grade: " << grade << " is too low" RESET;
+	oss << "The passed grade: " << grade << " is too low";
 	_msg = oss.str();
 }
 
@@ -82,7 +82,7 @@ const char* Form::GradeTooLowException::what() const throw()
 Form::GradeTooHighException::GradeTooHighException(unsigned int grade)
 {
 	std::ostringstream	oss;
-	oss << ERROR "The passed grade: " << grade << " is too high" RESET;
+	oss << "The passed grade: " << grade << " is too high";
 	_msg = oss.str();
 }
 
