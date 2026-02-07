@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Form.hpp"
-#include "Bureaucrat.hpp"
 
 /* -- COLORS -- */
 #define ERROR       "\e[1;31m"
