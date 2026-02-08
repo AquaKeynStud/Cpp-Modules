@@ -1,3 +1,4 @@
+#include <fstream>
 #include <iostream>
 #include "ShrubberyCreationForm.hpp"
 
@@ -25,7 +26,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& toCopy
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	cout << NO_AFORM "🪾 ShrubberyCreationForm destroyed 🪾" RESET;
+	cout << NO_AFORM "🪾  ShrubberyCreationForm destroyed 🪾" RESET;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
@@ -46,5 +47,16 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 	else if (executor.getGrade() > getExecGrade())
 		throw GradeTooLowException(executor.getGrade());
 
-	
+	std::ofstream file((_target + "_shrubbery").c_str());
+	static const char* s_forest =
+		" ^  ^  ^   ^      ___I_      ^  ^   ^  ^  ^   ^  ^\n"
+		"/|\\/|\\/|\\ /|\\    /\\-_--\\    /|\\/|\\ /|\\/|\\/|\\ /|\\/|\\\n"
+		"/|\\/|\\/|\\ /|\\   /  \\_-__\\   /|\\/|\\ /|\\/|\\/|\\ /|\\/|\\\n"
+		"/|\\/|\\/|\\ /|\\   |[]| [] |   /|\\/|\\ /|\\/|\\/|\\ /|\\/|\\\n";
+
+	file << s_forest;
+
+	file.close();
+	cout << NEW_FILE << _target + "_shrubbery file created ! 📫" RESET;
+	return ;
 }

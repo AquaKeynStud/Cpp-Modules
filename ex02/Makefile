@@ -1,6 +1,6 @@
 .PHONY : all clean fclean re
 
-NAME := MoreForms.cpp5
+NAME := moreForms.cpp5
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ BASICS VARIABLES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
@@ -37,6 +37,8 @@ INC			=	-I$(D_INC)
 # ╭━━━━━━━━━━━━══════════╕出 ❖ RULES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
 all:	$(NAME)
+	@clear
+	@./$(NAME)
 
 $(NAME):	$(OBJS) $(INCS) | Makefile $(D_OBJ)
 	@$(CXX) $(CXXFLAGS) $(INC) $(OBJS) -o $(NAME)
@@ -55,7 +57,7 @@ clean:
 
 fclean:
 	@$(MAKE) -s SHOW_MSG_CLEAN=false clean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) *_shrubbery
 	@echo "\e[1;34m🧼 $(NAME) executable deleted ! 🧼\e[0m"
 
 re:

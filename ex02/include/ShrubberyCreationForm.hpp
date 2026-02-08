@@ -4,6 +4,9 @@
 /* -- Includes -- */
 #include "AForm.hpp"
 
+/* -- Colors -- */
+#define	NEW_FILE	"\e[1;38;2;40;100;200m"
+
 /* -- Class -- */
 class ShrubberyCreationForm : public AForm
 {

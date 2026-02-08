@@ -4,11 +4,14 @@
 /* -- Includes -- */
 #include "AForm.hpp"
 
+/* -- Colors -- */
+#define	PRESIDENT	"\e[1;38;2;255;150;225m"
+
 /* -- Class -- */
 class PresidentialPardonForm : public AForm
 {
 private:
-	const std::string& _target;
+	std::string _target;
 
 public:
 	PresidentialPardonForm();

@@ -17,7 +17,7 @@ int main()
 		Form contract("Contract", 50, 25);
 		Form secret("Secret", 1, 1);
 
-		cout << "\n\e[1m______________________________________________________\n" RESET;
+			cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
 
 		cout << CATEGORY "\n🔅 Tests d'affichage 🔅\n" RESET;
 
@@ -34,7 +34,7 @@ int main()
 			cout << ERROR "❌ Exception inattendue: " << e.what() << RESET;
 		}
 
-		cout << "\n\e[1m______________________________________________________\n" RESET;
+			cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
 
 		cout << CATEGORY "\n🔅 Signature des formulaires 🔅\n" RESET;
 
@@ -73,7 +73,7 @@ int main()
 		cout << contract << RESET;
 		cout << secret << RESET;
 
-		cout << "\n\e[1m______________________________________________________\n" RESET;
+			cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
 
 		/* -- CONSTRUCTEURS KO -- */
 		cout << CATEGORY "\n🔅 Création invalide de Form 🔅\n" RESET;
@@ -98,7 +98,7 @@ int main()
 			cout << ERROR "📛 Exception attrapée (comportement attendu): " << e.what() << RESET;
 		}
 
-		cout << "\n\e[1m______________________________________________________\n" RESET;
+			cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
 	}
 
 	cout << CATEGORY "\n🎉 Tous les tests sont passés !" RESET;

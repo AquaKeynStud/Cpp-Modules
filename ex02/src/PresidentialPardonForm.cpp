@@ -1,22 +1,52 @@
-#ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#include <iostream>
+#include "PresidentialPardonForm.hpp"
 
-/* -- Includes -- */
-#include "AForm.hpp"
+/* -- Usings -- */
+using std::cout;
 
 /* -- Class -- */
-class PresidentialPardonForm : public AForm
+PresidentialPardonForm::PresidentialPardonForm()
+	: AForm("PresidentialPardonForm", 25, 5), _target("Random guy")
 {
-public:
-	PresidentialPardonForm();
-	PresidentialPardonForm(const std::string& target);
-	PresidentialPardonForm(const PresidentialPardonForm& toCopy);
+	cout << NEW_AFORM "🤵 New PresidentialPardonForm created with [" << _target << "] as target 🤵" RESET;
+}
 
-	~PresidentialPardonForm();
+PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
+	: AForm("PresidentialPardonForm", 25, 5), _target(target)
+{
+	cout << NEW_AFORM "🤵 New PresidentialPardonForm created with [" << _target << "] as target 🤵" RESET;
+}
 
-	PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& toCopy)
+	: AForm("PresidentialPardonForm", 25, 5), _target(toCopy._target)
+{
+	cout << NEW_AFORM "🤵 New copy of a PresidentialPardonForm created 🤵" RESET;
+}
 
-	void	execute(const Bureaucrat& executor) const;
-};
+PresidentialPardonForm::~PresidentialPardonForm()
+{
+	cout << NO_AFORM "🫥 PresidentialPardonForm destroyed 🫥" RESET;
+}
 
-#endif
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& other)
+{
+	if (this != &other)
+		_target = other._target;
+
+	return (*this);
+}
+
+void PresidentialPardonForm::execute(const Bureaucrat& executor) const
+{
+	if (not getSigned())
+	{
+		cout << ERROR "🔖 The form must be signed to be executed 🔖" RESET;
+		return ;
+	}
+	else if (executor.getGrade() > getExecGrade())
+		throw GradeTooLowException(executor.getGrade());
+
+	cout << PRESIDENT << _target << " has been pardoned by Zaphod Beeblebrox 🫨" RESET;
+
+	return ;
+}
