@@ -18,6 +18,9 @@ private:
 	const unsigned int	_sign_grade;
 	const unsigned int	_exec_grade;
 
+protected:
+	bool	canExec(const Bureaucrat& executor) const;
+
 public:
 	AForm();
 	AForm(const AForm& toCopy);

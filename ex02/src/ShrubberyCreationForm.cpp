@@ -39,13 +39,8 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
-	if (not getSigned())
-	{
-		cout << ERROR "🔖 The form must be signed to be executed 🔖" RESET;
+	if (!canExec(executor))
 		return ;
-	}
-	else if (executor.getGrade() > getExecGrade())
-		throw GradeTooLowException(executor.getGrade());
 
 	std::ofstream file((_target + "_shrubbery").c_str());
 	static const char* s_forest =

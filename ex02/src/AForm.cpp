@@ -57,6 +57,20 @@ unsigned int AForm::getSignGrade() const { return (_sign_grade); }
 
 unsigned int AForm::getExecGrade() const { return (_exec_grade); }
 
+/* -- Methods -- */
+bool AForm::canExec(const Bureaucrat& executor) const
+{
+	if (not getSigned())
+	{
+		cout << ERROR "🔖 The form must be signed to be executed 🔖" RESET;
+		return (false);
+	}
+	else if (executor.getGrade() > getExecGrade())
+		throw GradeTooLowException(executor.getGrade());
+
+	return (true);
+}
+
 /* -- Exceptions -- */
 AForm::GradeTooLowException::GradeTooLowException(unsigned int grade)
 {

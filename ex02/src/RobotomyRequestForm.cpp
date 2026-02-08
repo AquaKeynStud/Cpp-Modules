@@ -39,13 +39,8 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
-	if (not getSigned())
-	{
-		cout << ERROR "🔖 The form must be signed to be executed 🔖" RESET;
+	if (!canExec(executor))
 		return ;
-	}
-	else if (executor.getGrade() > getExecGrade())
-		throw GradeTooLowException(executor.getGrade());
 
 	cout << ROBOT "\e[3m🤖 * drilling noises * 🤖\n";
 
