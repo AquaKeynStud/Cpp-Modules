@@ -37,12 +37,18 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
+bool ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
 	if (!canExec(executor))
-		return ;
+		return (false);
 
 	std::ofstream file((_target + "_shrubbery").c_str());
+	if (!file)
+	{
+		cout << ERROR "Error while trying to create a file; aborting..." RESET;
+		return (false);
+	}
+
 	static const char* s_forest =
 		" ^  ^  ^   ^      ___I_      ^  ^   ^  ^  ^   ^  ^\n"
 		"/|\\/|\\/|\\ /|\\    /\\-_--\\    /|\\/|\\ /|\\/|\\/|\\ /|\\/|\\\n"
@@ -53,5 +59,5 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 
 	file.close();
 	cout << NEW_FILE << _target + "_shrubbery file created ! 📫" RESET;
-	return ;
+	return (true);
 }

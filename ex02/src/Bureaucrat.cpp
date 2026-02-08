@@ -76,6 +76,17 @@ void Bureaucrat::signForm(AForm& form)
 		std::cout << _name << " couldn't sign " << form.getName() << " because his grade is too low.\n";
 }
 
+void Bureaucrat::executeForm(const AForm& form) const
+{
+	if (!form.execute(*this))
+	{
+		std::cout << ERROR "Bureaucrat [" << _name;
+		std::cout << "] failed to execute a " << form.getName() << "." RESET;
+		return ;
+	}
+	std::cout << form.getName() << " successfully executed by Bureaucrat [" << _name << "]." RESET;
+}
+
 /* -- Exceptions definitions -- */
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {

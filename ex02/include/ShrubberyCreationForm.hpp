@@ -22,7 +22,7 @@ public:
 
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 
-	void	execute(const Bureaucrat& executor) const;
+	bool	execute(const Bureaucrat& executor) const;
 };
 
 #endif

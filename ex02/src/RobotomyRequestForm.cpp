@@ -37,10 +37,10 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 	return (*this);
 }
 
-void RobotomyRequestForm::execute(const Bureaucrat& executor) const
+bool RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
 	if (!canExec(executor))
-		return ;
+		return (false);
 
 	cout << ROBOT "\e[3m🤖 * drilling noises * 🤖\n";
 
@@ -49,5 +49,5 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const
 	else
 		cout << _target << " robotomization failed... 📴" RESET;
 
-	return ;
+	return (true);
 }

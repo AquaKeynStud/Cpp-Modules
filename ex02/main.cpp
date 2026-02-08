@@ -64,11 +64,11 @@ int main()
 		cout << ERROR "📛 Exception: " << e.what() << " 📛" RESET;
 	}
 
-	dummy.execute(boss);
+	boss.executeForm(dummy);
 
 	cout << CATEGORY "\n━━━━━━━━━━━━ 🔅 PresidentialPardonForm tests 🔅 ━━━━━━━━━━━━\n" RESET;
 
-	random.execute(boss);
+	boss.executeForm(random);
 
 	try
 	{	
@@ -80,6 +80,15 @@ int main()
 	}
 
 	random.beSigned(boss);
+
+	try
+	{	
+		stagiaire.executeForm(random);
+	}
+	catch(const std::exception& e)
+	{
+		cout << ERROR "📛 Exception: " << e.what() << " 📛" RESET;
+	}
 
 	try
 	{	

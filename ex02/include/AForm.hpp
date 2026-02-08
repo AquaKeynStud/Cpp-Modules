@@ -40,7 +40,7 @@ public:
 	unsigned int		getExecGrade(void) const;
 
 // Methods //
-	virtual void		execute(Bureaucrat const & executor) const = 0;
+	virtual bool		execute(Bureaucrat const & executor) const = 0;
 
 // Exceptions //
 	class GradeTooLowException : public std::exception

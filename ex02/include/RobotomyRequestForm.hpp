@@ -22,7 +22,7 @@ public:
 
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 
-	void	execute(const Bureaucrat& executor) const;
+	bool	execute(const Bureaucrat& executor) const;
 };
 
 #endif

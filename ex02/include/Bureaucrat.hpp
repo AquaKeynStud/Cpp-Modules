@@ -51,6 +51,7 @@ public:
 
 // Other methods //
 	void				signForm(AForm& form);
+	void				executeForm(AForm const & form) const;
 
 // Exception //
 	class GradeTooLowException : public std::exception

@@ -22,7 +22,7 @@ public:
 
 	PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
 
-	void	execute(const Bureaucrat& executor) const;
+	bool	execute(const Bureaucrat& executor) const;
 };
 
 #endif
