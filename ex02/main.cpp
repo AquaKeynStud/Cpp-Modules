@@ -22,7 +22,7 @@ int main()
 	ShrubberyCreationForm hill;
 	PresidentialPardonForm random;
 	
-	std::srand(std::time(NULL));				// injection d'une valeur arbitraire comme seed
+	std::srand(std::time(NULL));				// Injecting an arbitrary value as a seed
 
 	cout << CATEGORY "\n━━━━━━━━━━━━ 🔅 ShrubberyCreationForm tests 🔅 ━━━━━━━━━━━━\n" RESET;
 
