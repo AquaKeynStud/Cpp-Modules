@@ -28,7 +28,7 @@ D_OBJ		=	.objs/
 vpath %.cpp $(D_SRC):$(CURDIR)
 
 # file lists
-SRCS		=	main.cpp
+SRCS		=	main.cpp ScalarConverter.cpp
 INCS		=	$(filter-out $(D_INC)main.hpp, $(addprefix $(D_INC), $(SRCS:.cpp=.hpp)))
 OBJS		=	$(addprefix $(D_OBJ), $(SRCS:.cpp=.o))
 
