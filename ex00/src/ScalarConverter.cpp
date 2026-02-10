@@ -1,53 +1,37 @@
-#include <climits>
 #include <cstdlib>
+#include <iostream>
+#include "Type_utils.hpp"
 #include "ScalarConverter.hpp"
 
+using std::cout;
 using std::string;
-
-bool isInt(const string& s);
-bool isChar(const string& s);
-bool isFloat(const string& s);
-bool isDouble(const string& s);
 
 void ScalarConverter::convert(const string& literal)
 {
-	double value;
+	double value = 0.0;
+	bool error = not isNumber(literal);
+	static const string types[4] = {"✒️ Char: ", "🎐 Int: ", "🍡 Float: ", "🍣 Double: "};
 
 	if (isChar(literal))
-		value = <static_cast>()
-}
+		value = static_cast<double>(literal[0]);
+	else if (not error)
+		value = strtod(literal.c_str(), NULL);
 
-/* -- Utility Functions -- */
+	for (int i = 0; i < 4; i++)
+	{
+		cout << BOLD << types[i];
 
-bool isChar(const string& s)
-{
-	return (s.length() == 1 and not isdigit(s[0]));
-}
+		if (!isChar(literal) and (error or isNan(value)))
+			cout << ((i < 2) ? RED "Impossible 🈲" : (i == 2) ? PURPLE "nanf" : PURPLE "nan");
+		else if (i == 0)
+			printChar(value);
+		else if (i == 1)
+			printInt(value);
+		else if (i == 2)
+			printFloat(value);
+		else
+			printDouble(value);
 
-bool isInt(const string& s)
-{
-	char *end;
-	long value = strtol(s.c_str(), &end, 10);
-
-	return (not (s.empty() or *end or value > INT_MAX or value < INT_MIN));
-}
-
-bool isFloat(const string& s)
-{
-	if (s == "nanf" or s == "+inff" or s == "-inff")
-		return (true);
-
-	char *end;
-	strtof(s.c_str(), &end);
-	return (*end == 'f' and *++end == '\0');
-}
-
-bool isDouble(const string& s)
-{
-	if (s == "nan" || s == "+inf" || s == "-inf")
-		return (true);
-
-	char *end;
-	strtod(s.c_str(), &end);
-	return (*end == '\0');
+		cout << RESET;
+	}
 }

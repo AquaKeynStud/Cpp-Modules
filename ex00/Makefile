@@ -1,12 +1,12 @@
 .PHONY : all clean fclean re
 
-NAME := .cpp5
+NAME := convert
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ BASICS VARIABLES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
 CXX				:=	c++
 
-CXXFLAGS		:=	-Wall -Wextra -Werror -std=c++98
+CXXFLAGS		:=	-Wall -Wextra -Werror -MMD -std=c++98
 
 RM				:=	rm	-rf
 
@@ -23,36 +23,34 @@ MAKEFLAGS		+=	--no-print-directory
 D_SRC		=	src/
 D_INC		=	include/
 
-D_OBJ		=	.objs/
+D_BIN		=	.bin/
 
 vpath %.cpp $(D_SRC):$(CURDIR)
 
 # file lists
-SRCS		=	main.cpp ScalarConverter.cpp
-INCS		=	$(filter-out $(D_INC)main.hpp, $(addprefix $(D_INC), $(SRCS:.cpp=.hpp)))
-OBJS		=	$(addprefix $(D_OBJ), $(SRCS:.cpp=.o))
+SRCS		=	main.cpp Type_utils.cpp ScalarConverter.cpp
+OBJS		=	$(addprefix $(D_BIN), $(SRCS:.cpp=.o))
+DEPS		=	$(addprefix $(D_BIN), $(SRCS:.cpp=.d))
 
 INC			=	-I$(D_INC)
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ RULES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
 all:	$(NAME)
-	@clear
-	@./$(NAME)
 
-$(NAME):	$(OBJS) $(INCS) | Makefile $(D_OBJ)
+$(NAME):	$(OBJS) | Makefile $(D_BIN)
 	@$(CXX) $(CXXFLAGS) $(INC) $(OBJS) -o $(NAME)
 	@echo "\e[1;32m🎍 $(NAME) program created successfully ! 🎍\e[0m"
 
-$(D_OBJ):
-	@$(MKDIR) $(D_OBJ)
+$(D_BIN):
+	@$(MKDIR) $@
 
-$(D_OBJ)%.o: %.cpp | Makefile $(D_OBJ)
+$(D_BIN)%.o: %.cpp | Makefile $(D_BIN)
 	@echo "\e[1m🫧 Compiling $< 🫧\e[0m"
 	@$(CXX) $(CXXFLAGS) $(INC) -c $< -o $@
 
 clean:
-	@$(RM) $(D_OBJ)
+	@$(RM) $(D_BIN)
 	@echo "\e[1;36m🫗 Deleted $(NAME) object files 🫗\e[0m"
 
 fclean:
@@ -73,3 +71,5 @@ valgrind:
 		--track-origins=yes 							\
 		--track-fds=yes									\
 		./$(NAME)
+
+-include $(DEPS)
