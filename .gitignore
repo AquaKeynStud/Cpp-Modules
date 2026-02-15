@@ -1,0 +1,12 @@
+.vscode/
+*.out
+./*.out
+.bin
+./*/.bin
+
+.subject.pdf
+.pdf
+.swp
+.vscode
+.dep/
+.obj/
