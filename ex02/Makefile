@@ -1,6 +1,6 @@
 .PHONY : all clean fclean re
 
-NAME := template00.out
+NAME := mutated.out
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ BASICS VARIABLES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
