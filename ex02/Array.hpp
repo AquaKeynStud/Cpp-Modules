@@ -22,10 +22,6 @@ public:
 	unsigned int	size(void) const;
 };
 
-#include <string>
-
-#include <string>
-
 template <typename T>
 std::string getTypeName()
 {
