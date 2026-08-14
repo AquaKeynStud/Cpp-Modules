@@ -1,6 +1,6 @@
 .PHONY : all clean fclean re
 
-NAME := btc
+NAME := RPN
 
 # ╭━━━━━━━━━━━━══════════╕出 ❖ BASICS VARIABLES ❖ 力╒═══════════━━━━━━━━━━━━╮ #
 
@@ -28,7 +28,7 @@ D_BIN		=	.bin/
 vpath %.cpp $(D_SRC):$(CURDIR)
 
 # file lists
-SRCS		=	main.cpp BitcoinExchange.cpp
+SRCS		=	RPN.cpp main.cpp
 OBJS		=	$(addprefix $(D_BIN), $(SRCS:.cpp=.o))
 DEPS		=	$(addprefix $(D_BIN), $(SRCS:.cpp=.d))
 
@@ -38,7 +38,7 @@ INC			=	-I. -I$(D_INC)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJS) BitcoinExchange.hpp | Makefile $(D_BIN)
+$(NAME):	$(OBJS) RPN.hpp | Makefile $(D_BIN)
 	@$(CXX) $(CXXFLAGS) $(INC) $(OBJS) -o $(NAME)
 	@echo "\e[1;32m🎍 $(NAME) program created successfully ! 🎍\e[0m"
 
